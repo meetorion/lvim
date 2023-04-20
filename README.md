@@ -1,9 +1,11 @@
-# Lunarvim config for gopher
+# My Lunarvim Config
 
-## Debug
-lvim默认配置了debug套件，只需要指定go的dap配置即可。
-- 新增插件为：
+## 安装说明
+- 备份原lvim配置文件
 ```
-
+mv ~/.config/lvim ~/.config/lvim.bak
 ```
-
+- clone本仓库的lvim配置文件
+```
+git clone https://github.com/meetorion/lvim.git
+```
