@@ -9,3 +9,4 @@ mv ~/.config/lvim ~/.config/lvim.bak
 ```
 git clone https://github.com/meetorion/lvim.git
 ```
+# lvim
