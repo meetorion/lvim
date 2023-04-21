@@ -28,6 +28,7 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
 -- -- Change theme settings
 lvim.colorscheme = "darkplus"
+-- lvim.colorscheme = "molokai"
 
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"

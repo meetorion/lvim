@@ -40,6 +40,8 @@
   "lunar.nvim": { "branch": "master", "commit": "08bbc93b96ad698d22fc2aa01805786bcedc34b9" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "6c8f7afd6162fa27719f9da9792e4314da41c501" },
   "mason.nvim": { "branch": "main", "commit": "a1e01f3029217910a376be4a890c3b836ddda113" },
+  "molokai.nvim": { "branch": "main", "commit": "720bacc534fa3b1566d75612986737088a4fb132" },
+  "moonbow.nvim": { "branch": "master", "commit": "2564c8a8efc18eb65104c75b404972e4fabd1d25" },
   "neodev.nvim": { "branch": "main", "commit": "ac2747fa98cd19ccfbf70df1503ad80a812f0bfd" },
   "neogit": { "branch": "master", "commit": "039ff3212ec43cc4d3332956dfb54e263c8d5033" },
   "neural": { "branch": "main", "commit": "c70837e6fcee89bf99f9ba0e5ee7bfa7e0956a07" },

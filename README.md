@@ -9,4 +9,9 @@ mv ~/.config/lvim ~/.config/lvim.bak
 ```
 git clone https://github.com/meetorion/lvim.git
 ```
-# lvim
+
+## 支持功能及对应插件
+| 功能  | 插件   | 备注   |
+|-------------- | -------------- | -------------- |
+| 快速运行| Item1     | Item1     |
+

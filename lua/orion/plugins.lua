@@ -1,12 +1,13 @@
 -- Additional Plugins
 lvim.plugins = {
+    { "ellisonleao/gruvbox.nvim", priority = 1000 },
+    { "arturgoms/moonbow.nvim" },
     {
         "james1236/backseat.nvim",
         config = function()
             require("backseat").setup({
                 -- Alternatively, set the env var $OPENAI_API_KEY by putting "export OPENAI_API_KEY=sk-xxxxx" in your ~/.bashrc
-                openai_api_key = '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', -- Get yours from platform.openai.com/account/api-keys
-                openai_model_id = 'gpt-3.5-turbo',                                      --gpt-4 (If you do not have access to a model, it says "The model does not exist")
+                openai_model_id = 'gpt-3.5-turbo', --gpt-4 (If you do not have access to a model, it says "The model does not exist")
                 -- split_threshold = 100,
                 -- additional_instruction = "Respond snarkily", -- (GPT-3 will probably deny this request, but GPT-4 complies)
                 -- highlight = {
@@ -52,7 +53,6 @@ lvim.plugins = {
     "liuchengxu/vista.vim",
     "ray-x/go.nvim",
     -- "github/copilot.vim",
-    "ellisonleao/gruvbox.nvim",
     "LunarVim/synthwave84.nvim",
     "roobert/tailwindcss-colorizer-cmp.nvim",
     "lunarvim/github.nvim",
@@ -148,16 +148,4 @@ lvim.plugins = {
             }
         end,
     },
-    -- "MunifTanjim/nui.nvim",
-    -- {
-    --   "folke/noice.nvim",
-    --   event = "VimEnter",
-    --   config = function()
-    --     require("noice").setup()
-    --   end,
-    -- },
-
-    -- https://github.com/jose-elias-alvarez/typescript.nvim
-    -- "rmagatti/auto-session",
-    -- "rmagatti/session-lens"
 }
