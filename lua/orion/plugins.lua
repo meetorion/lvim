@@ -1,7 +1,40 @@
--- Additional Plugins
 lvim.plugins = {
-    { "ellisonleao/gruvbox.nvim", priority = 1000 },
-    { "arturgoms/moonbow.nvim" },
+    {
+        "jackMort/ChatGPT.nvim",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim",
+        },
+        config = function()
+            require("chatgpt").setup({
+                chat = {
+                    keymaps = {
+                        close = { "jk", "kj", "<Esc>" },
+                        yank_last = "<C-y>",
+                        scroll_up = "<C-u>",
+                        scroll_down = "<C-d>",
+                        toggle_settings = "<C-o>",
+                        new_session = "<C-n>",
+                        cycle_windows = "<Tab>",
+                    },
+                },
+                popup_input = {
+                    submit = "<M-Enter>",
+                },
+            })
+        end,
+    },
+    -- 'dense-analysis/ale',
+    {
+        'phaazon/hop.nvim',
+        branch = 'v2', -- optional but strongly recommended
+        config = function()
+            -- you can configure Hop the way you like here; see :h hop-config
+            require "hop".setup { keys = 'etovxqpdygfblzhckisuran' }
+        end
+    },
+    { "ellisonleao/gruvbox.nvim",          priority = 1000 },
     {
         "james1236/backseat.nvim",
         config = function()
@@ -20,16 +53,6 @@ lvim.plugins = {
     "h-hg/fcitx.nvim",
     {
         "dense-analysis/neural",
-        -- config = function()
-        --     require("neural").setup({
-        --         sources = {
-        --             openai = {
-        --                 api_key = "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",
-        --             },
-        --         },
-        --     })
-        -- end,
-        -- -- config = function()
     },
     {
         "folke/trouble.nvim",
@@ -110,7 +133,6 @@ lvim.plugins = {
         end,
     },
     "MunifTanjim/nui.nvim",
-    "jackMort/ChatGPT.nvim",
     {
         "jinh0/eyeliner.nvim",
         config = function()
