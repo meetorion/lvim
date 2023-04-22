@@ -30,8 +30,10 @@ lvim.builtin.which_key.mappings["v"] = {
 lvim.builtin.which_key.mappings["m"] = {
     name = "more",
     e = { "<cmd>Vista<cr>", "Vista" },
-    c = { "<cmd>Copilot panel<cr>", "Copilot" },
-    v = { "<cmd>vsplit<cr>", "Vsplit" }
+    c = { "<cmd>ChatGPT<cr>", "ChatGPT" },
+    -- c = { "<cmd>Copilot panel<cr>", "Copilot" },
+    v = { "<cmd>vsplit<cr>", "Vsplit" },
+    f = { "<cmd>HopWord<cr>", "HopWord" },
 }
 
 -- neotest快捷键
