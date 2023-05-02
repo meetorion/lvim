@@ -10,8 +10,4 @@ mv ~/.config/lvim ~/.config/lvim.bak
 git clone https://github.com/meetorion/lvim.git
 ```
 
-## 支持功能及对应插件
-| 功能  | 插件   | 备注   |
-|-------------- | -------------- | -------------- |
-| 快速运行| Jaq| Item1     |
 
