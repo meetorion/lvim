@@ -1,4 +1,5 @@
-reload "orion.plugins"
+qreload "orion.plugins"
+-- reload "orion.neuron"
 reload "orion.options"
 reload "orion.keys"
 -- reload "orion.chatgpt"
