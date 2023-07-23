@@ -9,5 +9,8 @@ mv ~/.config/lvim ~/.config/lvim.bak
 ```
 git clone https://github.com/meetorion/lvim.git
 ```
+## 功能说明
+### C++ IDE
+
 
 

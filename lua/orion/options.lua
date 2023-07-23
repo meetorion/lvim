@@ -28,6 +28,7 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
 -- -- Change theme settings
 lvim.colorscheme = "darkplus"
+-- lvim.colorscheme = "onedark"
 -- lvim.colorscheme = "gruvbox"
 vim.opt.termguicolors = true
 
