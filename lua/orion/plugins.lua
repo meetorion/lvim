@@ -1,5 +1,41 @@
 lvim.plugins = {
     {
+        "mthbernardes/codeexplain.nvim",
+        lazy = true,
+        cmd = "CodeExplain",
+        build = function()
+            vim.cmd([[silent UpdateRemotePlugins]])
+        end,
+    },
+    {
+        "Bryley/neoai.nvim",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+        },
+        cmd = {
+            "NeoAI",
+            "NeoAIOpen",
+            "NeoAIClose",
+            "NeoAIToggle",
+            "NeoAIContext",
+            "NeoAIContextOpen",
+            "NeoAIContextClose",
+            "NeoAIInject",
+            "NeoAIInjectCode",
+            "NeoAIInjectContext",
+            "NeoAIInjectContextCode",
+        },
+        keys = {
+            { "<leader>as", desc = "summarize text" },
+            { "<leader>ag", desc = "generate git message" },
+        },
+        config = function()
+            require("neoai").setup({
+                -- Options go here
+            })
+        end,
+    },
+    {
         'xeluxee/competitest.nvim',
         dependencies = 'MunifTanjim/nui.nvim',
         config = function() require('competitest').setup() end,
@@ -98,7 +134,15 @@ lvim.plugins = {
     "NvChad/nvim-colorizer.lua",
     "ghillb/cybu.nvim",
     "moll/vim-bbye",
-    "folke/todo-comments.nvim",
+    {
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        }
+    },
     "windwp/nvim-spectre",
     "f-person/git-blame.nvim",
     "ruifm/gitlinker.nvim",
