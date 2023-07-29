@@ -10,7 +10,16 @@ mv ~/.config/lvim ~/.config/lvim.bak
 git clone https://github.com/meetorion/lvim.git
 ```
 ## 功能说明
-### C++ IDE
+
+### C++ Debugging
+- 安装cpptools
+```
+:MasonInstll cpptools
+```
+- 添加-g选项来生成调试信息(必须添加-g)
+```
+g++ -g main.cpp -o main
+```
 
 
 

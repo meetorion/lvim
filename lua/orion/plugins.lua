@@ -1,5 +1,10 @@
 lvim.plugins = {
     {
+        "williamboman/mason.nvim",
+        "mfussenegger/nvim-dap",
+        "jay-babu/mason-nvim-dap.nvim",
+    },
+    {
         'xeluxee/competitest.nvim',
         dependencies = 'MunifTanjim/nui.nvim',
         config = function() require('competitest').setup() end,
@@ -113,7 +118,7 @@ lvim.plugins = {
     -- "hrsh7th/cmp-emoji",
     "ggandor/leap.nvim",
     "nacro90/numb.nvim",
-    "TimUntersberger/neogit",
+    -- "TimUntersberger/neogit",
     "sindrets/diffview.nvim",
     "simrat39/rust-tools.nvim",
     -- "olexsmir/gopher.nvim",
