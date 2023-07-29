@@ -21,3 +21,9 @@ if not dap_ok then
 end
 
 dapgo.setup()
+
+-- vista.vim插件问题修复
+vim.g['vista#renderer#enable_icon'] = 0
+vim.g.vista_executive_for = {
+    go = 'nvim_lsp',
+}

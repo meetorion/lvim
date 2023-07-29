@@ -84,3 +84,15 @@ lvim.keys.normal_mode["<F10>"] = "<cmd>lua require'dap'.step_over()<cr>"
 lvim.keys.normal_mode["<F11>"] = "<cmd>lua require'dap'.step_into()<cr>"
 lvim.keys.normal_mode["<F12>"] = "<cmd>lua require'dap'.step_out()<cr>"
 lvim.keys.normal_mode["<C-i>"] = "<cmd>lua require'dapui'.eval()<cr>"
+
+-- 代码解释
+lvim.keys.visual_mode["<C-k>"] = ":CodeExplain<cr>"
+
+-- TodoComments快捷键
+lvim.builtin.which_key.mappings["T"] = {
+    name = "+TodoComments",
+    l = { ":TodoLocList<cr>", "Locklist" },
+    f = { ":TodoQuickFix<cr>", "QuickFix" },
+    s = { ":TodoTelescope<cr>", "Telescope" },
+    t = { ":TodoTrouble", "Trouble" },
+}
