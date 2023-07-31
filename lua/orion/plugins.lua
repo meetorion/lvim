@@ -40,40 +40,9 @@ lvim.plugins = {
     -- 'ChristianChiarulli/codi.vim',
 
     {
-        "mthbernardes/codeexplain.nvim",
-        lazy = true,
-        cmd = "CodeExplain",
-        build = function()
-            vim.cmd([[silent UpdateRemotePlugins]])
-        end,
-    },
-    {
-        "Bryley/neoai.nvim",
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-        },
-        cmd = {
-            "NeoAI",
-            "NeoAIOpen",
-            "NeoAIClose",
-            "NeoAIToggle",
-            "NeoAIContext",
-            "NeoAIContextOpen",
-            "NeoAIContextClose",
-            "NeoAIInject",
-            "NeoAIInjectCode",
-            "NeoAIInjectContext",
-            "NeoAIInjectContextCode",
-        },
-        keys = {
-            { "<leader>as", desc = "summarize text" },
-            { "<leader>ag", desc = "generate git message" },
-        },
-        config = function()
-            require("neoai").setup({
-                -- Options go here
-            })
-        end,
+        "williamboman/mason.nvim",
+        "mfussenegger/nvim-dap",
+        "jay-babu/mason-nvim-dap.nvim",
     },
     {
         'xeluxee/competitest.nvim',
@@ -197,7 +166,7 @@ lvim.plugins = {
     -- "hrsh7th/cmp-emoji",
     "ggandor/leap.nvim",
     "nacro90/numb.nvim",
-    "TimUntersberger/neogit",
+    -- "TimUntersberger/neogit",
     "sindrets/diffview.nvim",
     "simrat39/rust-tools.nvim",
     -- "olexsmir/gopher.nvim",
