@@ -49,6 +49,8 @@ lvim.builtin.which_key.mappings["N"] = {
 -- 终端插件floaterm快捷键
 lvim.builtin.which_key.mappings["o"] = {
     name = "+open",
+    i = { "<cmd>NeoAI<cr>", "NeoAI" },
+    c = { "<cmd>NeoAIContext<cr>", "NeoAIContext" },
     a = { "<cmd>FloatermNew --wintype=popup --height=6<cr>", "terminal" },
     f = { "<cmd>FloatermNew fzf<cr>", "fzf" },
     g = { "<cmd>FloatermNew lazygit<cr>", "lazygit" },

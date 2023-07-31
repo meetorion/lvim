@@ -1,4 +1,44 @@
 lvim.plugins = {
+    -- AI
+    {
+        'Exafunction/codeium.vim',
+        config = function()
+            -- Change '<C-g>' here to any keycode you like.
+            -- vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true })
+            vim.keymap.set('i', '<M-;>', function() return vim.fn['codeium#Accept']() end, { expr = true })
+            vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+            vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
+            vim.keymap.set('i', '<M-n>', function() return vim.fn['codeium#Clear']() end, { expr = true })
+        end
+    },
+    -- Add Codeium support, pin to stable version due to crash on input auth key
+    {
+        "jcdickinson/codeium.nvim",
+        commit = "b1ff0d6c993e3d87a4362d2ccd6c660f7444599f",
+        config = true,
+    },
+    -- {
+    --     "jcdickinson/codeium.nvim",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --         "hrsh7th/nvim-cmp",
+    --     },
+    --     config = function()
+    --         require("codeium").setup({
+    --         })
+    --     end
+    -- },
+
+    -- IDES
+    -- python
+    "ChristianChiarulli/swenv.nvim",
+    "stevearc/dressing.nvim",
+    "mfussenegger/nvim-dap-python",
+    "nvim-neotest/neotest",
+    "nvim-neotest/neotest-python",
+    'metakirby5/codi.vim',
+    -- 'ChristianChiarulli/codi.vim',
+
     {
         "mthbernardes/codeexplain.nvim",
         lazy = true,
@@ -162,7 +202,6 @@ lvim.plugins = {
     "simrat39/rust-tools.nvim",
     -- "olexsmir/gopher.nvim",
     "leoluz/nvim-dap-go",
-    "mfussenegger/nvim-dap-python",
     "jose-elias-alvarez/typescript.nvim",
     "mxsdev/nvim-dap-vscode-js",
     "petertriho/nvim-scrollbar",
