@@ -1,5 +1,72 @@
 lvim.plugins = {
+    -- LSP
+    {
+        'rmagatti/goto-preview',
+        config = function()
+            require('goto-preview').setup {}
+        end
+    },
+
+    -- Note
+    {
+        "nvim-neorg/neorg",
+        build = ":Neorg sync-parsers",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        config = function()
+            require("neorg").setup {
+                load = {
+                    ["core.defaults"] = {},  -- Loads default behaviour
+                    ["core.concealer"] = {}, -- Adds pretty icons to your documents
+                    ["core.dirman"] = {      -- Manages Neorg workspaces
+                        config = {
+                            workspaces = {
+                                notes = "~/notes",
+                            },
+                        },
+                    },
+                },
+            }
+        end,
+    },
+    -- Notion
+    {
+        "chrsm/impulse.nvim",
+        config = function()
+            require("impulse").setup({
+                always_refetch = true,
+            })
+        end,
+        dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
+    },
     -- AI
+    {
+        "Bryley/neoai.nvim",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+        },
+        cmd = {
+            "NeoAI",
+            "NeoAIOpen",
+            "NeoAIClose",
+            "NeoAIToggle",
+            "NeoAIContext",
+            "NeoAIContextOpen",
+            "NeoAIContextClose",
+            "NeoAIInject",
+            "NeoAIInjectCode",
+            "NeoAIInjectContext",
+            "NeoAIInjectContextCode",
+        },
+        keys = {
+            { "<leader>as", desc = "summarize text" },
+            { "<leader>ag", desc = "generate git message" },
+        },
+        config = function()
+            require("neoai").setup({
+                -- Options go here
+            })
+        end,
+    },
     {
         'Exafunction/codeium.vim',
         config = function()
@@ -37,8 +104,6 @@ lvim.plugins = {
     "nvim-neotest/neotest",
     "nvim-neotest/neotest-python",
     'metakirby5/codi.vim',
-    -- 'ChristianChiarulli/codi.vim',
-
     {
         "williamboman/mason.nvim",
         "mfussenegger/nvim-dap",
