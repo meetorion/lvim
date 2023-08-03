@@ -1,4 +1,25 @@
 lvim.plugins = {
+    -- code
+    {
+        "Dhanus3133/LeetBuddy.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim",
+        },
+        config = function()
+            require("leetbuddy").setup({
+                domain = "cn", -- `cn` for chinese leetcode
+                language = "rust",
+            })
+        end,
+        keys = {
+            { "<leader>uq", "<cmd>LBQuestions<cr>", desc = "List Questions" },
+            { "<leader>ul", "<cmd>LBQuestion<cr>",  desc = "View Question" },
+            { "<leader>ur", "<cmd>LBReset<cr>",     desc = "Reset Code" },
+            { "<leader>ut", "<cmd>LBTest<cr>",      desc = "Run Code" },
+            { "<leader>us", "<cmd>LBSubmit<cr>",    desc = "Submit Code" },
+        },
+    },
     -- LSP
     {
         'rmagatti/goto-preview',
@@ -200,7 +221,14 @@ lvim.plugins = {
     "mfussenegger/nvim-jdtls",
     -- "karb94/neoscroll.nvim",
     "opalmay/vim-smoothie",
-    "j-hui/fidget.nvim",
+    {
+        "j-hui/fidget.nvim",
+        version = "legacy",
+        event = "LspAttach",
+        opts = {
+            -- options
+        },
+    },
     "christianchiarulli/nvim-ts-autotag",
     "kylechui/nvim-surround",
     "christianchiarulli/harpoon",
