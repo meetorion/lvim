@@ -1,9 +1,21 @@
 lvim.plugins = {
-    -- workflow
+    -- gpt
     {
-        "m4xshen/hardtime.nvim",
-        opts = {}
+        "robitx/gp.nvim",
+        config = function()
+            require("gp").setup()
+
+            -- or setup with your own config (see Install > Configuration in Readme)
+            -- require("gp").setup(conf)
+
+            -- shortcuts might be setup here (see Usage > Shortcuts in Readme)
+        end,
     },
+    -- workflow
+    -- {
+    --     "m4xshen/hardtime.nvim",
+    --     opts = {}
+    -- },
     -- code
     {
         "Dhanus3133/LeetBuddy.nvim",
