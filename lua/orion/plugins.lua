@@ -1,4 +1,9 @@
 lvim.plugins = {
+    -- workflow
+    {
+        "m4xshen/hardtime.nvim",
+        opts = {}
+    },
     -- code
     {
         "Dhanus3133/LeetBuddy.nvim",
