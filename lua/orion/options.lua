@@ -1,7 +1,7 @@
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 lvim.transparent_window = true
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- general
 lvim.log.level = "info"
