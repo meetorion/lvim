@@ -21,5 +21,10 @@ git clone https://github.com/meetorion/lvim.git
 g++ -g main.cpp -o main
 ```
 
+### Go
+```
+:MasonInstall gopls golangci-lint-langserver delve goimports gofumpt gomodifytags gotests impl
+```
+
 
 

@@ -1,5 +1,49 @@
 lvim.plugins = {
     {
+        "mickael-menu/zk-nvim",
+        config = function()
+            require("zk").setup({
+                -- See Setup section below
+            })
+        end
+    },
+
+    --IDEs
+    --go
+    "olexsmir/gopher.nvim",
+    {
+        "ray-x/go.nvim",
+        dependencies = { -- optional packages
+            "ray-x/guihua.lua",
+            "neovim/nvim-lspconfig",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        config = function()
+            require("go").setup()
+        end,
+        event = { "CmdlineEnter" },
+        ft = { "go", 'gomod' },
+        build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+    },
+    "leoluz/nvim-dap-go",
+
+    -- lazy.nvim
+    -- {
+    --     "folke/noice.nvim",
+    --     event = "VeryLazy",
+    --     opts = {
+    --         -- add any options here
+    --     },
+    --     dependencies = {
+    --         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+    --         "MunifTanjim/nui.nvim",
+    --         -- OPTIONAL:
+    --         --   `nvim-notify` is only needed, if you want to use the notification view.
+    --         --   If not available, we use `mini` as the fallback
+    --         -- "rcarriga/nvim-notify",
+    --     }
+    -- },
+    {
         "williamboman/mason.nvim",
         "mfussenegger/nvim-dap",
         "jay-babu/mason-nvim-dap.nvim",
@@ -84,7 +128,6 @@ lvim.plugins = {
     "voldikss/vim-floaterm",
     "theHamsta/nvim-dap-virtual-text",
     "liuchengxu/vista.vim",
-    "ray-x/go.nvim",
     -- "github/copilot.vim",
     "LunarVim/synthwave84.nvim",
     "roobert/tailwindcss-colorizer-cmp.nvim",
@@ -95,7 +138,14 @@ lvim.plugins = {
     "mfussenegger/nvim-jdtls",
     -- "karb94/neoscroll.nvim",
     "opalmay/vim-smoothie",
-    "j-hui/fidget.nvim",
+    {
+        "j-hui/fidget.nvim",
+        tag = "legacy",
+        event = "LspAttach",
+        opts = {
+            -- options
+        },
+    },
     "christianchiarulli/nvim-ts-autotag",
     "kylechui/nvim-surround",
     "christianchiarulli/harpoon",
@@ -123,17 +173,13 @@ lvim.plugins = {
     "lunarvim/templeos.nvim",
     "kevinhwang91/nvim-bqf",
     "is0n/jaq-nvim",
-    -- "hrsh7th/cmp-emoji",
+    "hrsh7th/cmp-emoji",
     "ggandor/leap.nvim",
     "nacro90/numb.nvim",
     -- "TimUntersberger/neogit",
     "sindrets/diffview.nvim",
     "simrat39/rust-tools.nvim",
-    -- "olexsmir/gopher.nvim",
-    "leoluz/nvim-dap-go",
     "mfussenegger/nvim-dap-python",
-    "jose-elias-alvarez/typescript.nvim",
-    "mxsdev/nvim-dap-vscode-js",
     "petertriho/nvim-scrollbar",
     "renerocksai/telekasten.nvim",
     -- "renerocksai/calendar-vim",
