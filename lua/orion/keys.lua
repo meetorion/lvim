@@ -47,13 +47,16 @@ lvim.builtin.which_key.mappings["N"] = {
 }
 
 -- 终端插件floaterm快捷键
-lvim.builtin.which_key.mappings["o"] = {
+lvim.builtin.which_key.mappings["O"] = {
     name = "+open",
+    i = { "<cmd>NeoAI<cr>", "NeoAI" },
+    c = { "<cmd>NeoAIContext<cr>", "NeoAIContext" },
     a = { "<cmd>FloatermNew --wintype=popup --height=6<cr>", "terminal" },
     f = { "<cmd>FloatermNew fzf<cr>", "fzf" },
     g = { "<cmd>FloatermNew lazygit<cr>", "lazygit" },
     d = { "<cmd>FloatermNew lazydocker<cr>", "lazydocker" },
-    n = { "<cmd>FloatermNew node<cr>", "node" },
+    -- n = { "<cmd>FloatermNew node<cr>", "node" },
+    n = { ":lua require'impulse'.menu_search()<cr>", "Notion" },
     N = { "<cmd>FloatermNew nnn<cr>", "nnn" },
     p = { "<cmd>FloatermNew python<cr>", "python" },
     r = { "<cmd>FloatermNew ranger<cr>", "ranger" },
@@ -95,4 +98,25 @@ lvim.builtin.which_key.mappings["T"] = {
     f = { ":TodoQuickFix<cr>", "QuickFix" },
     s = { ":TodoTelescope<cr>", "Telescope" },
     t = { ":TodoTrouble", "Trouble" },
+}
+
+-- go to preview
+vim.keymap.set("n", "gpd", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", { noremap = true })
+vim.keymap.set("n", "gpt", "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>", { noremap = true })
+vim.keymap.set("n", "gpi", "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>", { noremap = true })
+vim.keymap.set("n", "gpr", "<cmd>lua require('goto-preview').goto_preview_references()<CR>", { noremap = true })
+vim.keymap.set("n", "gP", "<cmd>lua require('goto-preview').close_all_win()<CR>", { noremap = true })
+
+-- obsidian
+lvim.builtin.which_key.mappings["o"] = {
+    name = "+Obsidian",
+    s = { ":ObsidianSearch<cr>", "Search Text" },
+    f = { ":ObsidianFollowLink<cr>", "Follow Link" },
+    l = { ":ObsidianLink<cr>", "Link" },
+    n = { "<cmd>ObsidianLinkNew<cr>", "Link New" },
+    N = { "<cmd>ObsidianNew<cr>", "New" },
+    w = { "<cmd>ObsidianQuickSwitch<cr>", "Switch" },
+    t = { "<cmd>ObsidianToday<cr>", "Today" },
+    T = { "<cmd>ObsidianTemplate<cr>", "Template" },
+    y = { "<cmd>ObsidianYesterday<cr>", "Yesterday" },
 }

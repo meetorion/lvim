@@ -1,4 +1,175 @@
 lvim.plugins = {
+    -- Note
+    {
+        "epwalsh/obsidian.nvim",
+        lazy = true,
+        event = { "BufReadPre /home/leejoy/obsidian/neovim/**.md" },
+        -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand':
+        -- event = { "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md" },
+        dependencies = {
+            -- Required.
+            "nvim-lua/plenary.nvim",
+
+            -- see below for full list of optional dependencies 👇
+        },
+        opts = {
+            dir = "~/obsidian/neovim", -- no need to call 'vim.fn.expand' here
+            mappings = {},
+
+            -- see below for full list of options 👇
+        },
+    },
+    -- gpt
+    {
+        "robitx/gp.nvim",
+        config = function()
+            require("gp").setup()
+
+            -- or setup with your own config (see Install > Configuration in Readme)
+            -- require("gp").setup(conf)
+
+            -- shortcuts might be setup here (see Usage > Shortcuts in Readme)
+        end,
+    },
+    -- workflow
+    -- {
+    --     "m4xshen/hardtime.nvim",
+    --     opts = {}
+    -- },
+    -- code
+    {
+        "Dhanus3133/LeetBuddy.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim",
+        },
+        config = function()
+            require("leetbuddy").setup({
+                domain = "cn", -- `cn` for chinese leetcode
+                language = "rust",
+            })
+        end,
+        keys = {
+            { "<leader>uq", "<cmd>LBQuestions<cr>", desc = "List Questions" },
+            { "<leader>ul", "<cmd>LBQuestion<cr>",  desc = "View Question" },
+            { "<leader>ur", "<cmd>LBReset<cr>",     desc = "Reset Code" },
+            { "<leader>ut", "<cmd>LBTest<cr>",      desc = "Run Code" },
+            { "<leader>us", "<cmd>LBSubmit<cr>",    desc = "Submit Code" },
+        },
+    },
+    -- LSP
+    {
+        'rmagatti/goto-preview',
+        config = function()
+            require('goto-preview').setup {}
+        end
+    },
+
+
+    {
+        "nvim-neorg/neorg",
+        build = ":Neorg sync-parsers",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        config = function()
+            require("neorg").setup {
+                load = {
+                    ["core.defaults"] = {},  -- Loads default behaviour
+                    ["core.concealer"] = {}, -- Adds pretty icons to your documents
+                    ["core.dirman"] = {      -- Manages Neorg workspaces
+                        config = {
+                            workspaces = {
+                                notes = "~/notes",
+                            },
+                        },
+                    },
+                },
+            }
+        end,
+    },
+    -- Notion
+    {
+        "chrsm/impulse.nvim",
+        config = function()
+            require("impulse").setup({
+                always_refetch = true,
+            })
+        end,
+        dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
+    },
+    -- AI
+    {
+        "mthbernardes/codeexplain.nvim",
+        lazy = true,
+        cmd = "CodeExplain",
+        build = function()
+            vim.cmd([[silent UpdateRemotePlugins]])
+        end,
+    },
+    {
+        "Bryley/neoai.nvim",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+        },
+        cmd = {
+            "NeoAI",
+            "NeoAIOpen",
+            "NeoAIClose",
+            "NeoAIToggle",
+            "NeoAIContext",
+            "NeoAIContextOpen",
+            "NeoAIContextClose",
+            "NeoAIInject",
+            "NeoAIInjectCode",
+            "NeoAIInjectContext",
+            "NeoAIInjectContextCode",
+        },
+        keys = {
+            { "<leader>as", desc = "summarize text" },
+            { "<leader>ag", desc = "generate git message" },
+        },
+        config = function()
+            require("neoai").setup({
+                -- Options go here
+            })
+        end,
+    },
+    {
+        'Exafunction/codeium.vim',
+        config = function()
+            -- Change '<C-g>' here to any keycode you like.
+            -- vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true })
+            vim.keymap.set('i', '<M-;>', function() return vim.fn['codeium#Accept']() end, { expr = true })
+            vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+            vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
+            vim.keymap.set('i', '<M-n>', function() return vim.fn['codeium#Clear']() end, { expr = true })
+        end
+    },
+    -- Add Codeium support, pin to stable version due to crash on input auth key
+    {
+        "jcdickinson/codeium.nvim",
+        commit = "b1ff0d6c993e3d87a4362d2ccd6c660f7444599f",
+        config = true,
+    },
+    -- {
+    --     "jcdickinson/codeium.nvim",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --         "hrsh7th/nvim-cmp",
+    --     },
+    --     config = function()
+    --         require("codeium").setup({
+    --         })
+    --     end
+    -- },
+
+    -- IDES
+    -- python
+    "ChristianChiarulli/swenv.nvim",
+    "stevearc/dressing.nvim",
+    "mfussenegger/nvim-dap-python",
+    "nvim-neotest/neotest",
+    "nvim-neotest/neotest-python",
+    'metakirby5/codi.vim',
     {
         "mickael-menu/zk-nvim",
         config = function()
@@ -140,7 +311,7 @@ lvim.plugins = {
     "opalmay/vim-smoothie",
     {
         "j-hui/fidget.nvim",
-        tag = "legacy",
+        version = "legacy",
         event = "LspAttach",
         opts = {
             -- options
@@ -179,7 +350,10 @@ lvim.plugins = {
     -- "TimUntersberger/neogit",
     "sindrets/diffview.nvim",
     "simrat39/rust-tools.nvim",
-    "mfussenegger/nvim-dap-python",
+    -- "olexsmir/gopher.nvim",
+    "leoluz/nvim-dap-go",
+    "jose-elias-alvarez/typescript.nvim",
+    "mxsdev/nvim-dap-vscode-js",
     "petertriho/nvim-scrollbar",
     "renerocksai/telekasten.nvim",
     -- "renerocksai/calendar-vim",
