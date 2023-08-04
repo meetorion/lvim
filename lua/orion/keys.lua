@@ -47,7 +47,7 @@ lvim.builtin.which_key.mappings["N"] = {
 }
 
 -- 终端插件floaterm快捷键
-lvim.builtin.which_key.mappings["o"] = {
+lvim.builtin.which_key.mappings["O"] = {
     name = "+open",
     i = { "<cmd>NeoAI<cr>", "NeoAI" },
     c = { "<cmd>NeoAIContext<cr>", "NeoAIContext" },
@@ -106,3 +106,17 @@ vim.keymap.set("n", "gpt", "<cmd>lua require('goto-preview').goto_preview_type_d
 vim.keymap.set("n", "gpi", "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>", { noremap = true })
 vim.keymap.set("n", "gpr", "<cmd>lua require('goto-preview').goto_preview_references()<CR>", { noremap = true })
 vim.keymap.set("n", "gP", "<cmd>lua require('goto-preview').close_all_win()<CR>", { noremap = true })
+
+-- obsidian
+lvim.builtin.which_key.mappings["o"] = {
+    name = "+Obsidian",
+    s = { ":ObsidianSearch<cr>", "Search Text" },
+    f = { ":ObsidianFollowLink<cr>", "Follow Link" },
+    l = { ":ObsidianLink<cr>", "Link" },
+    n = { "<cmd>ObsidianLinkNew<cr>", "Link New" },
+    N = { "<cmd>ObsidianNew<cr>", "New" },
+    w = { "<cmd>ObsidianQuickSwitch<cr>", "Switch" },
+    t = { "<cmd>ObsidianToday<cr>", "Today" },
+    T = { "<cmd>ObsidianTemplate<cr>", "Template" },
+    y = { "<cmd>ObsidianYesterday<cr>", "Yesterday" },
+}

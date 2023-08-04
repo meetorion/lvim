@@ -1,4 +1,24 @@
 lvim.plugins = {
+    -- Note
+    {
+        "epwalsh/obsidian.nvim",
+        lazy = true,
+        event = { "BufReadPre /home/leejoy/obsidian/neovim/**.md" },
+        -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand':
+        -- event = { "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md" },
+        dependencies = {
+            -- Required.
+            "nvim-lua/plenary.nvim",
+
+            -- see below for full list of optional dependencies 👇
+        },
+        opts = {
+            dir = "~/obsidian/neovim", -- no need to call 'vim.fn.expand' here
+            mappings = {},
+
+            -- see below for full list of options 👇
+        },
+    },
     -- gpt
     {
         "robitx/gp.nvim",
@@ -45,7 +65,7 @@ lvim.plugins = {
         end
     },
 
-    -- Note
+
     {
         "nvim-neorg/neorg",
         build = ":Neorg sync-parsers",
@@ -77,6 +97,14 @@ lvim.plugins = {
         dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
     },
     -- AI
+    {
+        "mthbernardes/codeexplain.nvim",
+        lazy = true,
+        cmd = "CodeExplain",
+        build = function()
+            vim.cmd([[silent UpdateRemotePlugins]])
+        end,
+    },
     {
         "Bryley/neoai.nvim",
         dependencies = {
