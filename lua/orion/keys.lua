@@ -111,12 +111,21 @@ vim.keymap.set("n", "gP", "<cmd>lua require('goto-preview').close_all_win()<CR>"
 lvim.builtin.which_key.mappings["o"] = {
     name = "+Obsidian",
     s = { ":ObsidianSearch<cr>", "Search Text" },
-    f = { ":ObsidianFollowLink<cr>", "Follow Link" },
+    g = { ":ObsidianFollowLink<cr>", "Follow Link" },
     l = { ":ObsidianLink<cr>", "Link" },
     n = { "<cmd>ObsidianLinkNew<cr>", "Link New" },
     N = { "<cmd>ObsidianNew<cr>", "New" },
-    w = { "<cmd>ObsidianQuickSwitch<cr>", "Switch" },
+    f = { "<cmd>ObsidianQuickSwitch<cr>", "Switch" },
     t = { "<cmd>ObsidianToday<cr>", "Today" },
     T = { "<cmd>ObsidianTemplate<cr>", "Template" },
     y = { "<cmd>ObsidianYesterday<cr>", "Yesterday" },
+}
+
+lvim.builtin.which_key.mappings["u"] = {
+    name = "+LeetcodeBuddy",
+    l = { "<cmd>LBQuestions<cr>", "List Questions" },
+    v = { "<cmd>LBQuestion<cr>", "View Question" },
+    r = { "<cmd>LBReset<cr>", "Reset Code" },
+    t = { "<cmd>LBTest<cr>", "Run Code" },
+    s = { "<cmd>LBSubmit<cr>", "Submit Code" },
 }
