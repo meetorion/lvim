@@ -1,5 +1,18 @@
 lvim.plugins = {
-    -- Note
+    {
+        "Dhanus3133/LeetBuddy.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim",
+        },
+        config = function()
+            require("leetbuddy").setup({
+                domain = "cn",
+                language = "cpp",
+            })
+        end,
+
+    },
     {
         "epwalsh/obsidian.nvim",
         lazy = true,
@@ -15,6 +28,9 @@ lvim.plugins = {
         opts = {
             dir = "~/obsidian/neovim", -- no need to call 'vim.fn.expand' here
             mappings = {},
+            -- mappings = {
+            --     ["gv"] = require("obsidian.mapping").gf_passthrough(),
+            -- },
 
             -- see below for full list of options 👇
         },
@@ -37,26 +53,26 @@ lvim.plugins = {
     --     opts = {}
     -- },
     -- code
-    {
-        "Dhanus3133/LeetBuddy.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim",
-        },
-        config = function()
-            require("leetbuddy").setup({
-                domain = "cn", -- `cn` for chinese leetcode
-                language = "rust",
-            })
-        end,
-        keys = {
-            { "<leader>uq", "<cmd>LBQuestions<cr>", desc = "List Questions" },
-            { "<leader>ul", "<cmd>LBQuestion<cr>",  desc = "View Question" },
-            { "<leader>ur", "<cmd>LBReset<cr>",     desc = "Reset Code" },
-            { "<leader>ut", "<cmd>LBTest<cr>",      desc = "Run Code" },
-            { "<leader>us", "<cmd>LBSubmit<cr>",    desc = "Submit Code" },
-        },
-    },
+    -- {
+    --     "Dhanus3133/LeetBuddy.nvim",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --         "nvim-telescope/telescope.nvim",
+    --     },
+    --     config = function()
+    --         require("leetbuddy").setup({
+    --             domain = "cn", -- `cn` for chinese leetcode
+    --             language = "cpp",
+    --         })
+    --     end,
+    --     keys = {
+    --         { "<leader>uq", "<cmd>LBQuestions<cr>", desc = "List Questions" },
+    --         { "<leader>ul", "<cmd>LBQuestion<cr>",  desc = "View Question" },
+    --         { "<leader>ur", "<cmd>LBReset<cr>",     desc = "Reset Code" },
+    --         { "<leader>ut", "<cmd>LBTest<cr>",      desc = "Run Code" },
+    --         { "<leader>us", "<cmd>LBSubmit<cr>",    desc = "Submit Code" },
+    --     },
+    -- },
     -- LSP
     {
         'rmagatti/goto-preview',
@@ -133,34 +149,34 @@ lvim.plugins = {
             })
         end,
     },
-    {
-        'Exafunction/codeium.vim',
-        config = function()
-            -- Change '<C-g>' here to any keycode you like.
-            -- vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true })
-            vim.keymap.set('i', '<M-;>', function() return vim.fn['codeium#Accept']() end, { expr = true })
-            vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
-            vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
-            vim.keymap.set('i', '<M-n>', function() return vim.fn['codeium#Clear']() end, { expr = true })
-        end
-    },
-    -- Add Codeium support, pin to stable version due to crash on input auth key
-    {
-        "jcdickinson/codeium.nvim",
-        commit = "b1ff0d6c993e3d87a4362d2ccd6c660f7444599f",
-        config = true,
-    },
     -- {
-    --     "jcdickinson/codeium.nvim",
-    --     dependencies = {
-    --         "nvim-lua/plenary.nvim",
-    --         "hrsh7th/nvim-cmp",
-    --     },
+    --     'Exafunction/codeium.vim',
     --     config = function()
-    --         require("codeium").setup({
-    --         })
+    --         -- Change '<C-g>' here to any keycode you like.
+    --         -- vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true })
+    --         vim.keymap.set('i', '<M-;>', function() return vim.fn['codeium#Accept']() end, { expr = true })
+    --         vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+    --         vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
+    --         vim.keymap.set('i', '<M-n>', function() return vim.fn['codeium#Clear']() end, { expr = true })
     --     end
     -- },
+    -- Add Codeium support, pin to stable version due to crash on input auth key
+    -- {
+    --     "jcdickinson/codeium.nvim",
+    --     commit = "b1ff0d6c993e3d87a4362d2ccd6c660f7444599f",
+    --     config = true,
+    -- },
+    {
+        "jcdickinson/codeium.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "hrsh7th/nvim-cmp",
+        },
+        config = function()
+            require("codeium").setup({
+            })
+        end
+    },
 
     -- IDES
     -- python
@@ -311,7 +327,7 @@ lvim.plugins = {
     "opalmay/vim-smoothie",
     {
         "j-hui/fidget.nvim",
-        version = "legacy",
+        tag = "legacy",
         event = "LspAttach",
         opts = {
             -- options
