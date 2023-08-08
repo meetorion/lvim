@@ -47,7 +47,7 @@ lvim.builtin.which_key.mappings["N"] = {
 }
 
 -- 终端插件floaterm快捷键
-lvim.builtin.which_key.mappings["O"] = {
+lvim.builtin.which_key.mappings["o"] = {
     name = "+open",
     i = { "<cmd>NeoAI<cr>", "NeoAI" },
     c = { "<cmd>NeoAIContext<cr>", "NeoAIContext" },
@@ -108,7 +108,7 @@ vim.keymap.set("n", "gpr", "<cmd>lua require('goto-preview').goto_preview_refere
 vim.keymap.set("n", "gP", "<cmd>lua require('goto-preview').close_all_win()<CR>", { noremap = true })
 
 -- obsidian
-lvim.builtin.which_key.mappings["o"] = {
+lvim.builtin.which_key.mappings["n"] = {
     name = "+Obsidian",
     s = { ":ObsidianSearch<cr>", "Search Text" },
     g = { ":ObsidianFollowLink<cr>", "Follow Link" },

@@ -327,7 +327,7 @@ lvim.plugins = {
     "opalmay/vim-smoothie",
     {
         "j-hui/fidget.nvim",
-        tag = "legacy",
+        version = "legacy",
         event = "LspAttach",
         opts = {
             -- options
