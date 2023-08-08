@@ -108,6 +108,7 @@ lvim.plugins = {
         config = function()
             require("impulse").setup({
                 always_refetch = true,
+                open_in_browser = true,
             })
         end,
         dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },

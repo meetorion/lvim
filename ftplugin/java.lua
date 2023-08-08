@@ -1,3 +1,8 @@
+vim.opt_local.shiftwidth = 2
+vim.opt_local.tabstop = 2
+vim.opt_local.cmdheight = 2 -- more space in the neovim command line for displaying messages
+
+
 local status, jdtls = pcall(require, "jdtls")
 if not status then
     return
@@ -23,6 +28,7 @@ extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 -- Setup Testing and Debugging
 local bundles = {}
 local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
+print(mason_path)
 vim.list_extend(bundles, vim.split(vim.fn.glob(mason_path .. "packages/java-test/extension/server/*.jar"), "\n"))
 vim.list_extend(
     bundles,
@@ -47,11 +53,11 @@ local config = {
         "java.base/java.util=ALL-UNNAMED",
         "--add-opens",
         "java.base/java.lang=ALL-UNNAMED",
-        "-javaagent:" .. home .. "/.local/share/nvim/mason/packages/jdtls/lombok.jar",
+        "-javaagent:" .. home .. "/.local/share/lvim/mason/packages/jdtls/lombok.jar",
         "-jar",
-        vim.fn.glob(home .. "/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
+        vim.fn.glob(home .. "/.local/share/lvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
         "-configuration",
-        home .. "/.local/share/nvim/mason/packages/jdtls/config_" .. os_config,
+        home .. "/.local/share/lvim/mason/packages/jdtls/config_" .. os_config,
         "-data",
         workspace_dir,
     },
@@ -67,8 +73,8 @@ local config = {
                 updateBuildConfiguration = "interactive",
                 runtimes = {
                     {
-                        name = "JavaSE-8",
-                        path = "~/.sdkman/candidates/java/8.0.302-zulu",
+                        name = "JavaSE-11",
+                        path = "~/.sdkman/candidates/java/11.0.17-tem",
                     },
                     {
                         name = "JavaSE-18",

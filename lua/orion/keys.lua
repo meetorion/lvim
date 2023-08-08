@@ -82,10 +82,10 @@ lvim.keys.normal_mode["<C-u>"] = "<cmd>lua require'dapui'.toggle()<cr>"
 lvim.keys.normal_mode["<F4>"] = "<cmd>lua require'dap'.toggle_breakpoint()<cr>"
 lvim.keys.normal_mode["<F5>"] = "<cmd>lua require'dap'.start()<cr>"
 lvim.keys.normal_mode["<F6>"] = "<cmd>lua require'dap'.run_to_cursor()<cr>"
-lvim.keys.normal_mode["<F7>"] = "<cmd>lua require'dap'.repl.toggle()<cr>"
-lvim.keys.normal_mode["<F10>"] = "<cmd>lua require'dap'.step_over()<cr>"
-lvim.keys.normal_mode["<F11>"] = "<cmd>lua require'dap'.step_into()<cr>"
-lvim.keys.normal_mode["<F12>"] = "<cmd>lua require'dap'.step_out()<cr>"
+lvim.keys.normal_mode["<F9>"] = "<cmd>lua require'dap'.repl.toggle()<cr>"
+lvim.keys.normal_mode["<F8>"] = "<cmd>lua require'dap'.step_over()<cr>"
+lvim.keys.normal_mode["<F7>"] = "<cmd>lua require'dap'.step_into()<cr>"
+lvim.keys.normal_mode["<F10>"] = "<cmd>lua require'dap'.step_out()<cr>"
 lvim.keys.normal_mode["<C-i>"] = "<cmd>lua require'dapui'.eval()<cr>"
 
 -- 代码解释
@@ -106,6 +106,10 @@ vim.keymap.set("n", "gpt", "<cmd>lua require('goto-preview').goto_preview_type_d
 vim.keymap.set("n", "gpi", "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>", { noremap = true })
 vim.keymap.set("n", "gpr", "<cmd>lua require('goto-preview').goto_preview_references()<CR>", { noremap = true })
 vim.keymap.set("n", "gP", "<cmd>lua require('goto-preview').close_all_win()<CR>", { noremap = true })
+
+-- notion
+vim.keymap.set("n", "gns", "<cmd>lua require('impulse').menu_search()<CR>", { noremap = true })
+vim.keymap.set("n", "gnl", "<cmd>lua require('impulse').follow_link()<CR>", { noremap = true })
 
 -- obsidian
 lvim.builtin.which_key.mappings["n"] = {
