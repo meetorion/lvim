@@ -4,7 +4,13 @@ require("lspconfig").clangd.setup({
     }
 })
 
-lvim.format_on_save = true
+-- lvim.format_on_save = {
+--     enabled = true,
+--     pattern = "*.cpp",
+--     timeout = 1000,
+-- }
+-- lvim.format_on_save = true
+
 -- lvim.lsp.diagnostics.virtual_text = true
 vim.diagnostic.config({
     virtual_text = true
