@@ -16,6 +16,7 @@ lvim.builtin.treesitter.ensure_installed = {
 -- }
 
 -- lvim.format_on_save = {
+--     enabled = false,
 --     pattern = { "*.go" },
 -- }
 
