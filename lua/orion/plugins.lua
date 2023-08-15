@@ -1,4 +1,5 @@
 lvim.plugins = {
+    "p00f/clangd_extensions.nvim",
     {
         "folke/flash.nvim",
         event = "VeryLazy",
