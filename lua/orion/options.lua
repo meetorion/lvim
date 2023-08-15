@@ -5,7 +5,7 @@ vim.opt.relativenumber = true
 
 -- general
 lvim.log.level = "info"
-lvim.format_on_save = true
+lvim.format_on_save = false
 -- 获取当前工作目录的路径
 -- lvim.format_on_save = {
 --     enabled = true,
