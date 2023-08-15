@@ -315,7 +315,7 @@ lvim.plugins = {
             require "hop".setup { keys = 'etovxqpdygfblzhckisuran' }
         end
     },
-    { "ellisonleao/gruvbox.nvim",          priority = 1000 },
+    { "ellisonleao/gruvbox.nvim", priority = 1000 },
     {
         "james1236/backseat.nvim",
         config = function()
@@ -375,7 +375,8 @@ lvim.plugins = {
     },
     "christianchiarulli/nvim-ts-autotag",
     "kylechui/nvim-surround",
-    "christianchiarulli/harpoon",
+    'ThePrimeagen/harpoon',
+    -- "christianchiarulli/harpoon",
     "MattesGroeger/vim-bookmarks",
     "NvChad/nvim-colorizer.lua",
     "ghillb/cybu.nvim",
