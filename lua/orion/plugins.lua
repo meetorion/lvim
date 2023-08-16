@@ -3,7 +3,7 @@ lvim.plugins = {
     {
         "folke/flash.nvim",
         event = "VeryLazy",
-        ---@type Flash.Config
+        -- -@type Flash.Config
         opts = {},
         -- stylua: ignore
         keys = {
@@ -55,24 +55,6 @@ lvim.plugins = {
     {
         "epwalsh/obsidian.nvim",
         lazy = true,
-        event = { "BufReadPre /home/leejoy/obsidian/neovim/**.md" },
-        -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand':
-        -- event = { "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md" },
-        dependencies = {
-            -- Required.
-            "nvim-lua/plenary.nvim",
-
-            -- see below for full list of optional dependencies 👇
-        },
-        opts = {
-            dir = "~/obsidian/neovim", -- no need to call 'vim.fn.expand' here
-            mappings = {},
-            -- mappings = {
-            --     ["gv"] = require("obsidian.mapping").gf_passthrough(),
-            -- },
-
-            -- see below for full list of options 👇
-        },
     },
     -- gpt
     {
@@ -91,27 +73,6 @@ lvim.plugins = {
     --     "m4xshen/hardtime.nvim",
     --     opts = {}
     -- },
-    -- code
-    -- {
-    --     "Dhanus3133/LeetBuddy.nvim",
-    --     dependencies = {
-    --         "nvim-lua/plenary.nvim",
-    --         "nvim-telescope/telescope.nvim",
-    --     },
-    --     config = function()
-    --         require("leetbuddy").setup({
-    --             domain = "cn", -- `cn` for chinese leetcode
-    --             language = "cpp",
-    --         })
-    --     end,
-    --     keys = {
-    --         { "<leader>uq", "<cmd>LBQuestions<cr>", desc = "List Questions" },
-    --         { "<leader>ul", "<cmd>LBQuestion<cr>",  desc = "View Question" },
-    --         { "<leader>ur", "<cmd>LBReset<cr>",     desc = "Reset Code" },
-    --         { "<leader>ut", "<cmd>LBTest<cr>",      desc = "Run Code" },
-    --         { "<leader>us", "<cmd>LBSubmit<cr>",    desc = "Submit Code" },
-    --     },
-    -- },
     -- LSP
     {
         'rmagatti/goto-preview',
@@ -119,8 +80,6 @@ lvim.plugins = {
             require('goto-preview').setup {}
         end
     },
-
-
     {
         "nvim-neorg/neorg",
         build = ":Neorg sync-parsers",
@@ -201,22 +160,22 @@ lvim.plugins = {
     --     end
     -- },
     -- Add Codeium support, pin to stable version due to crash on input auth key
-    -- {
-    --     "jcdickinson/codeium.nvim",
-    --     commit = "b1ff0d6c993e3d87a4362d2ccd6c660f7444599f",
-    --     config = true,
-    -- },
     {
         "jcdickinson/codeium.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "hrsh7th/nvim-cmp",
-        },
-        config = function()
-            require("codeium").setup({
-            })
-        end
+        commit = "b1ff0d6c993e3d87a4362d2ccd6c660f7444599f",
+        config = true,
     },
+    -- {
+    --     "jcdickinson/codeium.nvim",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --         "hrsh7th/nvim-cmp",
+    --     },
+    --     config = function()
+    --         require("codeium").setup({
+    --         })
+    --     end
+    -- },
 
     -- IDES
     -- python
@@ -315,7 +274,7 @@ lvim.plugins = {
             require "hop".setup { keys = 'etovxqpdygfblzhckisuran' }
         end
     },
-    { "ellisonleao/gruvbox.nvim", priority = 1000 },
+    { "ellisonleao/gruvbox.nvim",          priority = 1000 },
     {
         "james1236/backseat.nvim",
         config = function()
@@ -406,7 +365,56 @@ lvim.plugins = {
     "nacro90/numb.nvim",
     -- "TimUntersberger/neogit",
     "sindrets/diffview.nvim",
-    "simrat39/rust-tools.nvim",
+    --rust
+	-- RUST
+	{
+		"simrat39/rust-tools.nvim",
+		config = function()
+			-- local lsp_installer_servers = require("nvim-lsp-installer.servers")
+			-- local _, requested_server = lsp_installer_servers.get_server("rust_analyzer")
+			require("rust-tools").setup({
+				tools = {
+					autoSetHints = true,
+					-- hover_with_actions = true,
+					-- options same as lsp hover / vim.lsp.util.open_floating_preview()
+					hover_actions = {
+
+						-- the border that is used for the hover window
+						-- see vim.api.nvim_open_win()
+						border = {
+							{ "╭", "FloatBorder" },
+							{ "─", "FloatBorder" },
+							{ "╮", "FloatBorder" },
+							{ "│", "FloatBorder" },
+							{ "╯", "FloatBorder" },
+							{ "─", "FloatBorder" },
+							{ "╰", "FloatBorder" },
+							{ "│", "FloatBorder" },
+						},
+
+						-- whether the hover action window gets automatically focused
+						-- default: false
+						auto_focus = true,
+					},
+					runnables = {
+						use_telescope = true,
+					},
+				},
+				server = {
+					on_init = require("lvim.lsp").common_on_init,
+					on_attach = function(client, bufnr)
+						require("lvim.lsp").common_on_attach(client, bufnr)
+						local rt = require("rust-tools")
+						-- Hover actions
+						vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+						-- Code action groups
+						vim.keymap.set("n", "<leader>lA", rt.code_action_group.code_action_group, { buffer = bufnr })
+					end,
+				},
+			})
+		end,
+		ft = { "rust", "rs" },
+	},
     -- "olexsmir/gopher.nvim",
     "leoluz/nvim-dap-go",
     "jose-elias-alvarez/typescript.nvim",
