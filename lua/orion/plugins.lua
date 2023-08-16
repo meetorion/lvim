@@ -66,7 +66,7 @@ lvim.plugins = {
     {
         "folke/flash.nvim",
         event = "VeryLazy",
-        ---@type Flash.Config
+        -- -@type Flash.Config
         opts = {},
         -- stylua: ignore
         keys = {
