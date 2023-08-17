@@ -161,21 +161,10 @@ lvim.plugins = {
     --     end
     -- },
     -- Add Codeium support, pin to stable version due to crash on input auth key
-    -- {
-    --     "jcdickinson/codeium.nvim",
-    --     commit = "b1ff0d6c993e3d87a4362d2ccd6c660f7444599f",
-    --     config = true,
-    -- },
     {
         "jcdickinson/codeium.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "hrsh7th/nvim-cmp",
-        },
-        config = function()
-            require("codeium").setup({
-            })
-        end
+        commit = "b1ff0d6c993e3d87a4362d2ccd6c660f7444599f",
+        config = true,
     },
     -- IDES
     -- python
@@ -347,7 +336,56 @@ lvim.plugins = {
     "nacro90/numb.nvim",
     -- "TimUntersberger/neogit",
     "sindrets/diffview.nvim",
-    "simrat39/rust-tools.nvim",
+    --rust
+	-- RUST
+	{
+		"simrat39/rust-tools.nvim",
+		config = function()
+			-- local lsp_installer_servers = require("nvim-lsp-installer.servers")
+			-- local _, requested_server = lsp_installer_servers.get_server("rust_analyzer")
+			require("rust-tools").setup({
+				tools = {
+					autoSetHints = true,
+					-- hover_with_actions = true,
+					-- options same as lsp hover / vim.lsp.util.open_floating_preview()
+					hover_actions = {
+
+						-- the border that is used for the hover window
+						-- see vim.api.nvim_open_win()
+						border = {
+							{ "╭", "FloatBorder" },
+							{ "─", "FloatBorder" },
+							{ "╮", "FloatBorder" },
+							{ "│", "FloatBorder" },
+							{ "╯", "FloatBorder" },
+							{ "─", "FloatBorder" },
+							{ "╰", "FloatBorder" },
+							{ "│", "FloatBorder" },
+						},
+
+						-- whether the hover action window gets automatically focused
+						-- default: false
+						auto_focus = true,
+					},
+					runnables = {
+						use_telescope = true,
+					},
+				},
+				server = {
+					on_init = require("lvim.lsp").common_on_init,
+					on_attach = function(client, bufnr)
+						require("lvim.lsp").common_on_attach(client, bufnr)
+						local rt = require("rust-tools")
+						-- Hover actions
+						vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+						-- Code action groups
+						vim.keymap.set("n", "<leader>lA", rt.code_action_group.code_action_group, { buffer = bufnr })
+					end,
+				},
+			})
+		end,
+		ft = { "rust", "rs" },
+	},
     -- "olexsmir/gopher.nvim",
     "leoluz/nvim-dap-go",
     "jose-elias-alvarez/typescript.nvim",
