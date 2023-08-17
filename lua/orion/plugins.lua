@@ -1,4 +1,5 @@
 lvim.plugins = {
+    "scalameta/nvim-metals",
     "p00f/clangd_extensions.nvim",
     {
         "folke/flash.nvim",
@@ -55,24 +56,6 @@ lvim.plugins = {
     {
         "epwalsh/obsidian.nvim",
         lazy = true,
-        event = { "BufReadPre /home/leejoy/obsidian/neovim/**.md" },
-        -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand':
-        -- event = { "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md" },
-        dependencies = {
-            -- Required.
-            "nvim-lua/plenary.nvim",
-
-            -- see below for full list of optional dependencies 👇
-        },
-        opts = {
-            dir = "~/obsidian/neovim", -- no need to call 'vim.fn.expand' here
-            mappings = {},
-            -- mappings = {
-            --     ["gv"] = require("obsidian.mapping").gf_passthrough(),
-            -- },
-
-            -- see below for full list of options 👇
-        },
     },
     -- gpt
     {
@@ -91,27 +74,6 @@ lvim.plugins = {
     --     "m4xshen/hardtime.nvim",
     --     opts = {}
     -- },
-    -- code
-    -- {
-    --     "Dhanus3133/LeetBuddy.nvim",
-    --     dependencies = {
-    --         "nvim-lua/plenary.nvim",
-    --         "nvim-telescope/telescope.nvim",
-    --     },
-    --     config = function()
-    --         require("leetbuddy").setup({
-    --             domain = "cn", -- `cn` for chinese leetcode
-    --             language = "cpp",
-    --         })
-    --     end,
-    --     keys = {
-    --         { "<leader>uq", "<cmd>LBQuestions<cr>", desc = "List Questions" },
-    --         { "<leader>ul", "<cmd>LBQuestion<cr>",  desc = "View Question" },
-    --         { "<leader>ur", "<cmd>LBReset<cr>",     desc = "Reset Code" },
-    --         { "<leader>ut", "<cmd>LBTest<cr>",      desc = "Run Code" },
-    --         { "<leader>us", "<cmd>LBSubmit<cr>",    desc = "Submit Code" },
-    --     },
-    -- },
     -- LSP
     {
         'rmagatti/goto-preview',
@@ -119,8 +81,6 @@ lvim.plugins = {
             require('goto-preview').setup {}
         end
     },
-
-
     {
         "nvim-neorg/neorg",
         build = ":Neorg sync-parsers",
@@ -217,7 +177,6 @@ lvim.plugins = {
             })
         end
     },
-
     -- IDES
     -- python
     "ChristianChiarulli/swenv.nvim",
@@ -234,7 +193,6 @@ lvim.plugins = {
             })
         end
     },
-
     --IDEs
     --go
     "olexsmir/gopher.nvim",
@@ -253,23 +211,6 @@ lvim.plugins = {
         build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
     },
     "leoluz/nvim-dap-go",
-
-    -- lazy.nvim
-    -- {
-    --     "folke/noice.nvim",
-    --     event = "VeryLazy",
-    --     opts = {
-    --         -- add any options here
-    --     },
-    --     dependencies = {
-    --         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-    --         "MunifTanjim/nui.nvim",
-    --         -- OPTIONAL:
-    --         --   `nvim-notify` is only needed, if you want to use the notification view.
-    --         --   If not available, we use `mini` as the fallback
-    --         -- "rcarriga/nvim-notify",
-    --     }
-    -- },
     {
         "williamboman/mason.nvim",
         "mfussenegger/nvim-dap",
@@ -315,7 +256,7 @@ lvim.plugins = {
             require "hop".setup { keys = 'etovxqpdygfblzhckisuran' }
         end
     },
-    { "ellisonleao/gruvbox.nvim", priority = 1000 },
+    { "ellisonleao/gruvbox.nvim",          priority = 1000 },
     {
         "james1236/backseat.nvim",
         config = function()
