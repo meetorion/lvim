@@ -1,4 +1,5 @@
 lvim.plugins = {
+    'roxma/nvim-yarp',
     {
         'gelguy/wilder.nvim',
         config = function()
@@ -381,10 +382,9 @@ lvim.plugins = {
             require("rust-tools").setup({
                 tools = {
                     autoSetHints = true,
-                    -- hover_with_actions = true,
+                    hover_with_actions = true,
                     -- options same as lsp hover / vim.lsp.util.open_floating_preview()
                     hover_actions = {
-
                         -- the border that is used for the hover window
                         -- see vim.api.nvim_open_win()
                         border = {
@@ -397,7 +397,6 @@ lvim.plugins = {
                             { "╰", "FloatBorder" },
                             { "│", "FloatBorder" },
                         },
-
                         -- whether the hover action window gets automatically focused
                         -- default: false
                         auto_focus = true,

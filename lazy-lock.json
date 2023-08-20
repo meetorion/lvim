@@ -88,6 +88,7 @@
   "nvim-ts-autotag": { "branch": "main", "commit": "432c569ccc1d82b7a9a38f6fe5895e7d8b55ae3d" },
   "nvim-ts-context-commentstring": { "branch": "main", "commit": "e9062e2dfb9854e6a927370f2d720de354c88524" },
   "nvim-web-devicons": { "branch": "master", "commit": "efbfed0567ef4bfac3ce630524a0f6c8451c5534" },
+  "nvim-yarp": { "branch": "master", "commit": "bb5f5e038bfe119d3b777845a76b0b919b35ebc8" },
   "obsidian.nvim": { "branch": "main", "commit": "7645f5ff40bf3dad1053a5dc0a75446c8e5e6134" },
   "onedarker.nvim": { "branch": "freeze", "commit": "b00dd2189f264c5aeb4cf04c59439655ecd573ec" },
   "playground": { "branch": "master", "commit": "2b81a018a49f8e476341dfcb228b7b808baba68b" },

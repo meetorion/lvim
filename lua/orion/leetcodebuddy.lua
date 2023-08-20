@@ -1,4 +1,4 @@
 require('leetbuddy').setup({
-    domain = "com", -- `cn` for chinese leetcode
+    domain = "cn", -- `cn` for chinese leetcode
     language = "cpp",
 })
