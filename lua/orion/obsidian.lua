@@ -38,10 +38,10 @@ require("obsidian").setup({
         --     -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
         --     ["g"] = require("obsidian.mapping").gf_passthrough(),
         -- },
-        -- mappings = {
-        --     ["gl"] = require("obsidian.mapping").gf_passthrough(),
-        -- },
-        mappings = {},
+        mappings = {
+            ["gn"] = require("obsidian.mapping").gf_passthrough(),
+        },
+        -- mappings = {},
         -- Optional, customize how names/IDs for new notes are created.
         note_id_func = function(title)
             -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.

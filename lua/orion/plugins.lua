@@ -1,5 +1,11 @@
 lvim.plugins = {
-    "scalameta/nvim-metals",
+    'roxma/nvim-yarp',
+    {
+        'gelguy/wilder.nvim',
+        config = function()
+            -- config goes here
+        end,
+    },
     "p00f/clangd_extensions.nvim",
     {
         "folke/flash.nvim",
@@ -45,17 +51,9 @@ lvim.plugins = {
             "nvim-lua/plenary.nvim",
             "nvim-telescope/telescope.nvim",
         },
-        config = function()
-            require("leetbuddy").setup({
-                domain = "cn",
-                language = "cpp",
-            })
-        end,
-
     },
     {
         "epwalsh/obsidian.nvim",
-        lazy = true,
     },
     -- gpt
     {
