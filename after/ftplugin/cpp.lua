@@ -91,7 +91,7 @@ local dap = require("dap")
 dap.adapters.cppdbg = {
     id = "cppdbg",
     type = 'executable',
-    command = "/home/leejoy/.local/share/nvim/mason/bin/OpenDebugAD7",
+    command = "/home/leejoy/.local/share/lvim/mason/bin/OpenDebugAD7",
 }
 
 dap.configurations.cpp = {

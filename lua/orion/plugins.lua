@@ -336,7 +336,6 @@ lvim.plugins = {
     "nacro90/numb.nvim",
     -- "TimUntersberger/neogit",
     "sindrets/diffview.nvim",
-    --rust
 	-- RUST
 	{
 		"simrat39/rust-tools.nvim",
