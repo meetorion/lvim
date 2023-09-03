@@ -54,6 +54,36 @@ lvim.plugins = {
     },
     {
         "epwalsh/obsidian.nvim",
+        config = function()
+            require("obsidian").setup({
+                mappings = {},
+                dir = "~/syncspace/obsidian",
+                daily_notes = {
+                    -- Optional, if you keep daily notes in a separate directory.
+                    folder = "dailies",
+                    -- Optional, if you want to change the date format for daily notes.
+                    date_format = "%Y-%m-%d"
+                },
+                notes_subdir = "notes",
+                completion = {
+                    -- If using nvim-cmp, otherwise set to false
+                    nvim_cmp = true,
+                    -- Trigger completion at 2 chars
+                    min_chars = 2,
+                    -- Where to put new notes created from completion. Valid options are
+                    --  * "current_dir" - put new notes in same directory as the current buffer.
+                    --  * "notes_subdir" - put new notes in the default notes subdirectory.
+                    new_notes_location = "notes_subdir",
+                    -- Whether to add the output of the node_id_func to new notes in autocompletion.
+                    -- E.g. "[[Foo" completes to "[[foo|Foo]]" assuming "foo" is the ID of the note.
+                    prepend_note_id = false
+                },
+
+
+
+
+            })
+        end
     },
     -- gpt
     {
@@ -147,22 +177,16 @@ lvim.plugins = {
             })
         end,
     },
-    -- {
-    --     'Exafunction/codeium.vim',
-    --     config = function()
-    --         -- Change '<C-g>' here to any keycode you like.
-    --         -- vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true })
-    --         vim.keymap.set('i', '<M-;>', function() return vim.fn['codeium#Accept']() end, { expr = true })
-    --         vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
-    --         vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
-    --         vim.keymap.set('i', '<M-n>', function() return vim.fn['codeium#Clear']() end, { expr = true })
-    --     end
-    -- },
-    -- Add Codeium support, pin to stable version due to crash on input auth key
     {
-        "jcdickinson/codeium.nvim",
-        commit = "b1ff0d6c993e3d87a4362d2ccd6c660f7444599f",
-        config = true,
+        'Exafunction/codeium.vim',
+        config = function()
+            -- Change '<C-g>' here to any keycode you like.
+            -- vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true })
+            vim.keymap.set('i', '<M-;>', function() return vim.fn['codeium#Accept']() end, { expr = true })
+            vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+            vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
+            vim.keymap.set('i', '<M-n>', function() return vim.fn['codeium#Clear']() end, { expr = true })
+        end
     },
     -- IDES
     -- python
@@ -334,55 +358,55 @@ lvim.plugins = {
     "nacro90/numb.nvim",
     -- "TimUntersberger/neogit",
     "sindrets/diffview.nvim",
-	-- RUST
-	{
-		"simrat39/rust-tools.nvim",
-		config = function()
-			-- local lsp_installer_servers = require("nvim-lsp-installer.servers")
-			-- local _, requested_server = lsp_installer_servers.get_server("rust_analyzer")
-			require("rust-tools").setup({
-				tools = {
-					autoSetHints = true,
-					-- hover_with_actions = true,
-					-- options same as lsp hover / vim.lsp.util.open_floating_preview()
-					hover_actions = {
+    -- RUST
+    {
+        "simrat39/rust-tools.nvim",
+        config = function()
+            -- local lsp_installer_servers = require("nvim-lsp-installer.servers")
+            -- local _, requested_server = lsp_installer_servers.get_server("rust_analyzer")
+            require("rust-tools").setup({
+                tools = {
+                    autoSetHints = true,
+                    -- hover_with_actions = true,
+                    -- options same as lsp hover / vim.lsp.util.open_floating_preview()
+                    hover_actions = {
 
-						-- the border that is used for the hover window
-						-- see vim.api.nvim_open_win()
-						border = {
-							{ "╭", "FloatBorder" },
-							{ "─", "FloatBorder" },
-							{ "╮", "FloatBorder" },
-							{ "│", "FloatBorder" },
-							{ "╯", "FloatBorder" },
-							{ "─", "FloatBorder" },
-							{ "╰", "FloatBorder" },
-							{ "│", "FloatBorder" },
-						},
+                        -- the border that is used for the hover window
+                        -- see vim.api.nvim_open_win()
+                        border = {
+                            { "╭", "FloatBorder" },
+                            { "─", "FloatBorder" },
+                            { "╮", "FloatBorder" },
+                            { "│", "FloatBorder" },
+                            { "╯", "FloatBorder" },
+                            { "─", "FloatBorder" },
+                            { "╰", "FloatBorder" },
+                            { "│", "FloatBorder" },
+                        },
 
-						-- whether the hover action window gets automatically focused
-						-- default: false
-						auto_focus = true,
-					},
-					runnables = {
-						use_telescope = true,
-					},
-				},
-				server = {
-					on_init = require("lvim.lsp").common_on_init,
-					on_attach = function(client, bufnr)
-						require("lvim.lsp").common_on_attach(client, bufnr)
-						local rt = require("rust-tools")
-						-- Hover actions
-						vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
-						-- Code action groups
-						vim.keymap.set("n", "<leader>lA", rt.code_action_group.code_action_group, { buffer = bufnr })
-					end,
-				},
-			})
-		end,
-		ft = { "rust", "rs" },
-	},
+                        -- whether the hover action window gets automatically focused
+                        -- default: false
+                        auto_focus = true,
+                    },
+                    runnables = {
+                        use_telescope = true,
+                    },
+                },
+                server = {
+                    on_init = require("lvim.lsp").common_on_init,
+                    on_attach = function(client, bufnr)
+                        require("lvim.lsp").common_on_attach(client, bufnr)
+                        local rt = require("rust-tools")
+                        -- Hover actions
+                        vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+                        -- Code action groups
+                        vim.keymap.set("n", "<leader>lA", rt.code_action_group.code_action_group, { buffer = bufnr })
+                    end,
+                },
+            })
+        end,
+        ft = { "rust", "rs" },
+    },
     -- "olexsmir/gopher.nvim",
     "leoluz/nvim-dap-go",
     "jose-elias-alvarez/typescript.nvim",
