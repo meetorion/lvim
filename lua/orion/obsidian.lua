@@ -1,10 +1,9 @@
 require("obsidian").setup({
     {
         -- Required, the path to your vault directory.
-        dir = "~/syncspace/obsidian",
 
         -- Optional, if you keep notes in a specific subdirectory of your vault.
-        notes_subdir = "notes",
+        -- notes_subdir = "notes",
 
         -- Optional, set the log level for obsidian.nvim. This is an integer corresponding to one of the log
         -- levels defined by "vim.log.levels.*" or nil, which is equivalent to DEBUG (1).
@@ -38,10 +37,6 @@ require("obsidian").setup({
         --     -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
         --     ["g"] = require("obsidian.mapping").gf_passthrough(),
         -- },
-        mappings = {
-            ["gn"] = require("obsidian.mapping").gf_passthrough(),
-        },
-        -- mappings = {},
         -- Optional, customize how names/IDs for new notes are created.
         note_id_func = function(title)
             -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
@@ -114,26 +109,26 @@ require("obsidian").setup({
     }
 })
 
-local M = {
-    "ahmedkhalf/project.nvim",
-    event = "VeryLazy",
-}
+-- local M = {
+--     "ahmedkhalf/project.nvim",
+--     event = "VeryLazy",
+-- }
 
-M.config = function()
-    local project = require("project_nvim")
-    project.setup({
-        active = true,
-        on_config_done = nil,
-        manual_mode = false,
-        detection_methods = { "pattern" },
-        patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", ".project_root" },
-        show_hidden = false,
-        silent_chdir = true,
-        ignore_lsp = {},
-    })
+-- M.config = function()
+--     local project = require("project_nvim")
+--     project.setup({
+--         active = true,
+--         on_config_done = nil,
+--         manual_mode = false,
+--         detection_methods = { "pattern" },
+--         patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", ".project_root" },
+--         show_hidden = false,
+--         silent_chdir = true,
+--         ignore_lsp = {},
+--     })
 
-    local telescope = require("telescope")
-    telescope.load_extension("projects")
-end
+--     local telescope = require("telescope")
+--     telescope.load_extension("projects")
+-- end
 
-return M
+-- return M
