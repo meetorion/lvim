@@ -230,7 +230,7 @@ lvim.plugins = {
     {
         'xeluxee/competitest.nvim',
         dependencies = 'MunifTanjim/nui.nvim',
-        config = function() require('competitest').setup() end,
+        -- config = function() require('competitest').setup() end,
     },
     {
         "jackMort/ChatGPT.nvim",
