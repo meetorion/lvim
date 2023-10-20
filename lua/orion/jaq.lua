@@ -21,7 +21,8 @@ jaq_nvim.setup {
             cpp = "g++ -g % -o $fileBase && ./$fileBase",
             go = "go run %",
             sh = "sh %",
-            java = "java %"
+            java = "java %",
+            scala = "scala %",
         },
 
         -- Uses internal commands such as 'source' and 'luafile'

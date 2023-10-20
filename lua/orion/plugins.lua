@@ -1,4 +1,5 @@
 lvim.plugins = {
+    'scalameta/nvim-metals',
     'roxma/nvim-yarp',
     {
         'gelguy/wilder.nvim',
